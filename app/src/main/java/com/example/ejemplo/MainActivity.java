@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void listar(View vista){
-        Intent listar = new Intent(this, MainActivity2.class);
+        Intent listar = new Intent(this, Listado.class);
         startActivity(listar);
     }
 
@@ -66,15 +66,38 @@ public class MainActivity extends AppCompatActivity {
         );
         while (cursor.moveToNext()) {
             String nombre = cursor.getString(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.column1));
-            txtnombre=setText(nombre+"");
+            txtnombre.setText(nombre);
             String apellido = cursor.getString(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.column2));
-            txtapellido=setText(apellido+"");
+            txtapellido.setText(apellido);
         }
         cursor.close();
         db.close();
 
         }
-
-
+    public void eliminar(View vista){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String selection = FeedReaderContract.FeedEntry._ID + " = ?";
+        String[] selectionArgs = { txtid.getText().toString() };
+        int deletedRows = db.delete(FeedReaderContract.FeedEntry.name_table, selection, selectionArgs);
+db.close();
+Toast.makeText(getApplicationContext(),"se eliminó "+deletedRows+"registros",Toast.LENGTH_LONG).show();
     }
+public void actualizar(View vista){
+        SQLiteDatabase db= dbHelper.getWritableDatabase();
+        String nombre= txtnombre.getText().toString();
+    String apellido= txtapellido.getText().toString();
+    ContentValues values = new ContentValues();
+    values.put(FeedReaderContract.FeedEntry.column1, nombre);
+    values.put(FeedReaderContract.FeedEntry.column2, apellido);
+    String selection = FeedReaderContract.FeedEntry._ID + " = ?";
+    String[] selectionArgs = { txtid.getText().toString() };
+    int count = db.update(
+            FeedReaderContract.FeedEntry.name_table,
+            values,
+            selection,
+            selectionArgs);
+    Toast.makeText(getApplicationContext(),"se actualizo "+count+" registros",Toast.LENGTH_LONG).show();
+    db.close();
+
 }
+    }

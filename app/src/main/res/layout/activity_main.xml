@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FAF7F0"
-    tools:context=".MainActivity2">
+    tools:context=".MainActivity">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardFormulario"
@@ -125,14 +125,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="GUARDAR"
-                    android:layout_margin="4dp" />
+                    android:layout_margin="4dp"
+                    android:onClick="guardar" />
 
                 <Button
                     android:id="@+id/btnActualizar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ACTUALIZAR"
-                    android:layout_margin="4dp" />
+                    android:layout_margin="4dp"
+                    android:onClick="actualizar" />
 
             </LinearLayout>
 
@@ -148,14 +150,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="BUSCAR"
-                    android:layout_margin="4dp" />
+                    android:layout_margin="4dp"
+                    android:onClick="buscar" />
 
                 <Button
                     android:id="@+id/btnEliminar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ELIMINAR"
-                    android:layout_margin="4dp" />
+                    android:layout_margin="4dp"
+                    android:onClick="eliminar" />
 
             </LinearLayout>
 
@@ -165,7 +169,8 @@
                 android:layout_height="wrap_content"
                 android:text="LISTAR"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="4dp" />
+                android:layout_marginTop="4dp"
+                android:onClick="listar" />
 
         </LinearLayout>
 
